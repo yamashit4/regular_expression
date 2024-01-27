@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>regex</title>
+</head>
+
+<body>
+    <h1>登録してね</h1>
+    <form action="{% url 'regex_app:confirm' %}" method="POST">
+        {% csrf_token %}
+        <p>
+            <label for="name">Name:
+                <input type="text" name="name" id="name" value="{{ context.name }}">
+            </label>
+        </p>
+        {% if error_message.age %}
+        <p style="color: red;">{{ error_message.age }}</p>
+        {% endif %}
+        <p>
+            <label for="age">Age:
+                <input type="text" name="age" id="age" value="{{context.age}}">
+            </label>
+        </p>
+        {% if error_message.zip_code %}
+        <p style="color: red;">{{ error_message.zip_code }}</p>
+        {% endif %}
+        <p>
+            <label for="zip_code">Zip code:
+                <input type="text" name="zip_code" id="zip_code" value="{{ context.zip_code }}">
+            </label>
+        </p>
+        {% if error_message.tel %}
+        <p style="color: red;">{{ error_message.tel }}</p>
+        {% endif %}
+        <p>
+            <label for="">Cell phone:
+                <input type="text" name="tel" id="tel" value="{{context.tel}}">
+            </label>
+        </p>
+        <p>
+            <button type="submit">送信</button>
+        </p>
+    </form>
+</body>
+
+</html>
